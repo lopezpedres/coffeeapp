@@ -1,12 +1,16 @@
 import React from "react";
 import Cards from "./Cards";
 
-const CardList = ({ cards }) => {
+const CardList = ({ CoffeeData, setpreviewCoffee }) => {
   return (
-    <div className="row">
+    <div className="row ">
       <h2>Coffee List</h2>
-      {cards.map((card) => (
-        <Cards key={card.id} card={card} />
+      {CoffeeData.map((singlecoffee) => (
+        <Cards
+          key={singlecoffee.id}
+          singlecoffee={singlecoffee}
+          setpreviewCoffee={setpreviewCoffee}
+        />
       ))}
     </div>
   );
