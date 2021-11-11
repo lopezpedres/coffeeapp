@@ -28,7 +28,11 @@ function App() {
           </div>
           <div className="col-7 text-center">
             <h2>Preview</h2>
-            <Preview previewCoffee={previewCoffee} />
+            <Preview
+              previewCoffee={previewCoffee}
+              setpreviewCoffee={setpreviewCoffee}
+              initalPreview={initalPreview}
+            />
           </div>
         </div>
       </div>

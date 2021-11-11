@@ -1,6 +1,6 @@
 import React from "react";
 
-const Preview = ({ previewCoffee }) => {
+const Preview = ({ previewCoffee, setpreviewCoffee, initalPreview }) => {
   return (
     <div className="card ms-4">
       <img
@@ -10,8 +10,14 @@ const Preview = ({ previewCoffee }) => {
       />
       <div className="card-body">
         <h5 className="card-title">{previewCoffee.name}</h5>
-        <p>{previewCoffee.description}</p>
+        <p>{previewCoffee.procedure}</p>
       </div>
+      <button
+        onClick={() => setpreviewCoffee(initalPreview)}
+        className="btn btn-sm btn-dark"
+      >
+        Reset
+      </button>
     </div>
   );
 };
