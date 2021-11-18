@@ -5,19 +5,7 @@ import data from "./components/CoffeeData";
 import PreviewReducer from "./reducers/PreviewReducer";
 import { useReducer, useState } from "react";
 
-// const initalPreview = {
-//   id: 1,
-//   name: "Select a Coffee!",
-//   description:
-//     "Click on the preview button of a coffee type to see the ingredients and the instruccion to know how to prepare it",
-//   imageURL:
-//     "https://cdn.luxe.digital/media/2020/05/07203610/best-coffee-beans-luxe-digital-775x388.jpg",
-// };
-
 function App() {
-  // const [previewCoffee, setpreviewCoffee] = useState(null);
-  // const [coffeeData, setcoffeeData] = useState(CoffeeData)
-  //Need to finish the
   const [PreviewState, PreviewDispatch] = useReducer(PreviewReducer, data);
   const [PreviewCoffee, setPreviewCoffee] = useState(null);
   return (

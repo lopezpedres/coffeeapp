@@ -1,5 +1,6 @@
 import React from "react";
 import types from "../Types/types";
+import ModalExample from "./ModalExample";
 const initalPreview = {
   id: 1,
   name: "Select a Coffee!",
@@ -10,6 +11,10 @@ const initalPreview = {
 };
 
 const Preview = ({ setPreviewCoffee, PreviewCoffee, PreviewDispatch }) => {
+  const imgStyles = {
+    height: "350px",
+    objectFit: "cover",
+  };
   const deleteHandler = () => {
     setPreviewCoffee(null);
     PreviewDispatch({
@@ -22,6 +27,7 @@ const Preview = ({ setPreviewCoffee, PreviewCoffee, PreviewDispatch }) => {
       <img
         className="card-img-top"
         src={PreviewCoffee ? PreviewCoffee.imageURL : initalPreview.imageURL}
+        style={imgStyles}
         alt="This is an Americano"
       />
       <div className="card-body">
@@ -38,12 +44,8 @@ const Preview = ({ setPreviewCoffee, PreviewCoffee, PreviewDispatch }) => {
           >
             Delete
           </button>
-          <button
-            onClick={() => PreviewDispatch(initalPreview)}
-            className="btn btn-sm btn-outline-dark"
-          >
-            Edit
-          </button>
+
+          <ModalExample PreviewCoffee={PreviewCoffee} />
         </div>
       ) : null}
     </div>
