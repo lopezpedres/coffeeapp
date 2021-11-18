@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cards = ({ singlecoffee, setpreviewCoffee }) => {
+const Cards = ({ singlecoffee, setPreviewCoffee }) => {
   return (
     <div className=" col-6 card mt-2 ">
       <img
@@ -13,7 +13,7 @@ const Cards = ({ singlecoffee, setpreviewCoffee }) => {
         <p>{singlecoffee.description}</p>
         <button
           className="btn btn-sm btn-dark"
-          onClick={() => setpreviewCoffee(singlecoffee)}
+          onClick={() => setPreviewCoffee(singlecoffee)}
         >
           Preview
         </button>

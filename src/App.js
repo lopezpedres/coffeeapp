@@ -1,9 +1,9 @@
 import CardList from "./components/CardList";
 import NavBar from "./components/NavBar";
 import Preview from "./components/Preview";
-import CoffeeData from "./components/CoffeeData";
+import data from "./components/CoffeeData";
 import PreviewReducer from "./reducers/PreviewReducer";
-import { useState, useReducer } from "react";
+import { useReducer, useState } from "react";
 
 // const initalPreview = {
 //   id: 1,
@@ -15,9 +15,11 @@ import { useState, useReducer } from "react";
 // };
 
 function App() {
-  const [previewCoffee, setpreviewCoffee] = useState(null);
+  // const [previewCoffee, setpreviewCoffee] = useState(null);
+  // const [coffeeData, setcoffeeData] = useState(CoffeeData)
   //Need to finish the
-  const [PreviewState, PreviewDispatch] = useReducer(PreviewReducer);
+  const [PreviewState, PreviewDispatch] = useReducer(PreviewReducer, data);
+  const [PreviewCoffee, setPreviewCoffee] = useState(null);
   return (
     <div>
       <NavBar />
@@ -25,15 +27,16 @@ function App() {
         <div className="row">
           <div className="col-5 text-center">
             <CardList
-              CoffeeData={CoffeeData}
-              setpreviewCoffee={setpreviewCoffee}
+              PreviewState={PreviewState}
+              setPreviewCoffee={setPreviewCoffee}
             />
           </div>
           <div className="col-7 text-center">
             <h2>Preview</h2>
             <Preview
-              previewCoffee={previewCoffee}
-              setpreviewCoffee={setpreviewCoffee}
+              PreviewCoffee={PreviewCoffee}
+              PreviewDispatch={PreviewDispatch}
+              setPreviewCoffee={setPreviewCoffee}
             />
           </div>
         </div>

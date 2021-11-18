@@ -1,15 +1,16 @@
 import React from "react";
 import Cards from "./Cards";
 
-const CardList = ({ CoffeeData, setpreviewCoffee }) => {
+const CardList = ({ PreviewState, setPreviewCoffee }) => {
   return (
     <div className="row ">
       <h2>Coffee List</h2>
-      {CoffeeData.map((singlecoffee) => (
+      {console.log(PreviewState)}
+      {PreviewState.map((singlecoffee) => (
         <Cards
           key={singlecoffee.id}
           singlecoffee={singlecoffee}
-          setpreviewCoffee={setpreviewCoffee}
+          setPreviewCoffee={setPreviewCoffee}
         />
       ))}
     </div>

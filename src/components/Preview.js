@@ -1,4 +1,5 @@
 import React from "react";
+import types from "../Types/types";
 const initalPreview = {
   id: 1,
   name: "Select a Coffee!",
@@ -8,30 +9,37 @@ const initalPreview = {
     "https://cdn.luxe.digital/media/2020/05/07203610/best-coffee-beans-luxe-digital-775x388.jpg",
 };
 
-const Preview = ({ previewCoffee, setpreviewCoffee }) => {
+const Preview = ({ setPreviewCoffee, PreviewCoffee, PreviewDispatch }) => {
+  const deleteHandler = () => {
+    setPreviewCoffee(null);
+    PreviewDispatch({
+      type: types.coffeeDelete,
+      payload: PreviewCoffee,
+    });
+  };
   return (
     <div className="card ms-4">
       <img
         className="card-img-top"
-        src={previewCoffee ? previewCoffee.imageURL : initalPreview.imageURL}
+        src={PreviewCoffee ? PreviewCoffee.imageURL : initalPreview.imageURL}
         alt="This is an Americano"
       />
       <div className="card-body">
         <h5 className="card-title">
-          {previewCoffee ? previewCoffee.name : initalPreview.name}
+          {PreviewCoffee ? PreviewCoffee.name : initalPreview.name}
         </h5>
-        <p>{previewCoffee ? previewCoffee.procedure : null}</p>
+        <p>{PreviewCoffee ? PreviewCoffee.procedure : null}</p>
       </div>
-      {previewCoffee ? (
+      {PreviewCoffee ? (
         <div>
           <button
-            onClick={() => setpreviewCoffee(initalPreview)}
+            onClick={() => deleteHandler(PreviewCoffee)}
             className="btn btn-sm btn-danger me-2"
           >
             Delete
           </button>
           <button
-            onClick={() => setpreviewCoffee(initalPreview)}
+            onClick={() => PreviewDispatch(initalPreview)}
             className="btn btn-sm btn-outline-dark"
           >
             Edit

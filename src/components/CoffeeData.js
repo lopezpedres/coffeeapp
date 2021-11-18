@@ -5,7 +5,7 @@ const hotBeverages = {
   venti: { shots: 2, syrup: 5 },
   ventiIced: { shots: 2, syrup: 2 },
 };
-const CoffeeData = [
+const data = [
   {
     id: 1,
     name: "Americano",
@@ -64,4 +64,5 @@ const CoffeeData = [
     sizes: hotBeverages,
   },
 ];
-export default CoffeeData;
+
+export default data;
