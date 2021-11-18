@@ -2,19 +2,22 @@ import CardList from "./components/CardList";
 import NavBar from "./components/NavBar";
 import Preview from "./components/Preview";
 import CoffeeData from "./components/CoffeeData";
-import { useState } from "react";
+import PreviewReducer from "./reducers/PreviewReducer";
+import { useState, useReducer } from "react";
 
-const initalPreview = {
-  id: 1,
-  name: "Select a Coffee!",
-  description:
-    "Click on the preview button of a coffee type to see the ingredients and the instruccion to know how to prepare it",
-  imageURL:
-    "https://cdn.luxe.digital/media/2020/05/07203610/best-coffee-beans-luxe-digital-775x388.jpg",
-};
+// const initalPreview = {
+//   id: 1,
+//   name: "Select a Coffee!",
+//   description:
+//     "Click on the preview button of a coffee type to see the ingredients and the instruccion to know how to prepare it",
+//   imageURL:
+//     "https://cdn.luxe.digital/media/2020/05/07203610/best-coffee-beans-luxe-digital-775x388.jpg",
+// };
 
 function App() {
-  const [previewCoffee, setpreviewCoffee] = useState(initalPreview);
+  const [previewCoffee, setpreviewCoffee] = useState(null);
+  //Need to finish the
+  const [PreviewState, PreviewDispatch] = useReducer(PreviewReducer);
   return (
     <div>
       <NavBar />
@@ -31,7 +34,6 @@ function App() {
             <Preview
               previewCoffee={previewCoffee}
               setpreviewCoffee={setpreviewCoffee}
-              initalPreview={initalPreview}
             />
           </div>
         </div>

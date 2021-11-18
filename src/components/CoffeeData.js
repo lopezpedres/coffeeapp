@@ -1,9 +1,9 @@
 const hotBeverages = {
   short: { shots: 1, syrup: 2 },
   tall: { shots: 1, syrup: 3 },
-  grande: { shots: 1, syrup: 2 },
-  venti: { shots: 1, syrup: 2 },
-  ventiIced: { shots: 1, syrup: 2 },
+  grande: { shots: 2, syrup: 4 },
+  venti: { shots: 2, syrup: 5 },
+  ventiIced: { shots: 2, syrup: 2 },
 };
 const CoffeeData = [
   {
