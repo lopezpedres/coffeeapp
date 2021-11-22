@@ -3,11 +3,16 @@ import NavBar from "./components/NavBar";
 import Preview from "./components/Preview";
 import data from "./components/CoffeeData";
 import PreviewReducer from "./reducers/PreviewReducer";
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 function App() {
   const [PreviewState, PreviewDispatch] = useReducer(PreviewReducer, data);
   const [PreviewCoffee, setPreviewCoffee] = useState(null);
+  const [formValues, setformValues] = useState(null);
+
+  useEffect(() => {
+    console.log("App");
+  });
   return (
     <div>
       <NavBar />
@@ -17,6 +22,7 @@ function App() {
             <CardList
               PreviewState={PreviewState}
               setPreviewCoffee={setPreviewCoffee}
+              setformValues={setformValues}
             />
           </div>
           <div className="col-7 text-center">
@@ -25,6 +31,8 @@ function App() {
               PreviewCoffee={PreviewCoffee}
               PreviewDispatch={PreviewDispatch}
               setPreviewCoffee={setPreviewCoffee}
+              formValues={formValues}
+              setformValues={setformValues}
             />
           </div>
         </div>

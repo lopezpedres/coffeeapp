@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect } from "react";
 import types from "../Types/types";
 import ModalExample from "./ModalExample";
 const initalPreview = {
@@ -10,7 +10,13 @@ const initalPreview = {
     "https://cdn.luxe.digital/media/2020/05/07203610/best-coffee-beans-luxe-digital-775x388.jpg",
 };
 
-const Preview = ({ setPreviewCoffee, PreviewCoffee, PreviewDispatch }) => {
+const Preview = ({
+  setPreviewCoffee,
+  PreviewCoffee,
+  PreviewDispatch,
+  setformValues,
+  formValues,
+}) => {
   const imgStyles = {
     height: "350px",
     objectFit: "cover",
@@ -22,6 +28,9 @@ const Preview = ({ setPreviewCoffee, PreviewCoffee, PreviewDispatch }) => {
       payload: PreviewCoffee,
     });
   };
+  useEffect(() => {
+    console.log("Preview");
+  });
   return (
     <div className="card ms-4">
       <img
@@ -45,7 +54,13 @@ const Preview = ({ setPreviewCoffee, PreviewCoffee, PreviewDispatch }) => {
             Delete
           </button>
 
-          <ModalExample PreviewCoffee={PreviewCoffee} />
+          <ModalExample
+            setPreviewCoffee={setPreviewCoffee}
+            PreviewCoffee={PreviewCoffee}
+            PreviewDispatch={PreviewDispatch}
+            formValues={formValues}
+            setformValues={setformValues}
+          />
         </div>
       ) : null}
     </div>

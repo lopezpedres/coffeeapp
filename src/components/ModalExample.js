@@ -1,12 +1,41 @@
 import { Button, Modal } from "react-bootstrap";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import types from "../Types/types";
 
-const ModalExample = ({ PreviewCoffee, PreviewDispatch }) => {
+const ModalExample = ({
+  PreviewDispatch,
+  formValues,
+  setformValues,
+  setPreviewCoffee,
+}) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    console.log("ModalExample");
+  });
+
+  const onSubmitHandler = (e) => {
+    console.log("Form Submitted");
+    setPreviewCoffee(formValues);
+
+    e.preventDefault();
+
+    PreviewDispatch({ type: types.coffeeUpdate, payload: formValues });
+    handleClose();
+  };
+
+  const InputFormHandler = (e) => {
+    const changedFormValues = {
+      ...formValues,
+      [e.target.name]: e.target.value,
+    };
+    setformValues(changedFormValues);
+  };
+
   return (
     <>
       <Button variant="dark-outline small" size="sm" onClick={handleShow}>
@@ -15,7 +44,9 @@ const ModalExample = ({ PreviewCoffee, PreviewDispatch }) => {
 
       <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{`Editing ${PreviewCoffee.name} Coffee Card`}</Modal.Title>
+          <Modal.Title>{`Editing ${
+            formValues && formValues.name
+          } Coffee Card`}</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -25,8 +56,11 @@ const ModalExample = ({ PreviewCoffee, PreviewDispatch }) => {
                 Name:
               </label>
               <input
+                name="name"
+                value={formValues.name}
                 className="form-control"
-                placeholder={PreviewCoffee.name}
+                placeholder="Add Name"
+                onChange={InputFormHandler}
               ></input>
             </div>
 
@@ -35,8 +69,11 @@ const ModalExample = ({ PreviewCoffee, PreviewDispatch }) => {
                 Description:
               </label>
               <textarea
+                name="description"
+                value={formValues && formValues.description}
                 className="form-control"
-                placeholder={PreviewCoffee.description}
+                placeholder="Add Description"
+                onChange={InputFormHandler}
               ></textarea>
             </div>
             <div className="form-group">
@@ -44,21 +81,23 @@ const ModalExample = ({ PreviewCoffee, PreviewDispatch }) => {
                 Procedure:
               </label>
               <textarea
+                name="procedure"
+                value={formValues && formValues.procedure}
                 className="form-control"
-                placeholder={PreviewCoffee.procedure}
+                placeholder="Add Procedure"
+                onChange={InputFormHandler}
               ></textarea>
             </div>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button variant="primary" onClick={onSubmitHandler}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
           </form>
         </Modal.Body>
-
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

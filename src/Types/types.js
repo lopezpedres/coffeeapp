@@ -1,6 +1,6 @@
 const types = {
   coffeeDelete: "Cafe - Delete",
-  coffeeEdit: "Cafe - Edit",
+  coffeeUpdate: "Cafe - Update",
 };
 
 export default types;
