@@ -1,6 +1,6 @@
 import { React, useEffect } from "react";
 import types from "../Types/types";
-import ModalExample from "./ModalExample";
+import PreviewModal from "./PreviewModal";
 const initalPreview = {
   id: 1,
   name: "Select a Coffee!",
@@ -54,7 +54,7 @@ const Preview = ({
             Delete
           </button>
 
-          <ModalExample
+          <PreviewModal
             setPreviewCoffee={setPreviewCoffee}
             PreviewCoffee={PreviewCoffee}
             PreviewDispatch={PreviewDispatch}

@@ -1,47 +1,14 @@
+import React from "react";
 import { Button, Modal } from "react-bootstrap";
-
-import { useState, useEffect } from "react";
-import types from "../Types/types";
-
-const ModalExample = ({
-  PreviewDispatch,
+const ModalComponent = ({
   formValues,
-  setformValues,
-  setPreviewCoffee,
+  handleClose,
+  InputFormHandler,
+  show,
+  onSubmitHandler,
 }) => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  useEffect(() => {
-    console.log("ModalExample");
-  });
-
-  const onSubmitHandler = (e) => {
-    console.log("Form Submitted");
-    setPreviewCoffee(formValues);
-
-    e.preventDefault();
-
-    PreviewDispatch({ type: types.coffeeUpdate, payload: formValues });
-    handleClose();
-  };
-
-  const InputFormHandler = (e) => {
-    const changedFormValues = {
-      ...formValues,
-      [e.target.name]: e.target.value,
-    };
-    setformValues(changedFormValues);
-  };
-
   return (
     <>
-      <Button variant="dark-outline small" size="sm" onClick={handleShow}>
-        Edit
-      </Button>
-
       <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{`Editing ${
@@ -103,4 +70,4 @@ const ModalExample = ({
   );
 };
 
-export default ModalExample;
+export default ModalComponent;

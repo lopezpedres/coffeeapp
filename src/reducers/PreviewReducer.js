@@ -8,6 +8,8 @@ const PreviewReducer = (state, action) => {
       return state.map((aCoffee) =>
         aCoffee.id === action.payload.id ? action.payload : aCoffee
       );
+    case types.coffeeNew:
+      return [...state, action.payload];
 
     default:
       return state;
